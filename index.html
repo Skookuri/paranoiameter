@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Paranoia-Meter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>  
+  	select, button, body, th:hover {
+    	color: #7842f5;
+        background-color: #000000;
+        
+    }
+    
+    select, button {
+    	border-color: #7842f5;
+    }
+    
+    body {
+    	font-family: arial, sans-serif;
+        text-align: center;
+    }
+    
+  	table, td {
+  		border: 1px solid #000000;
+	}
+    
+    td#name:hover {
+    	background-color: #7842f5;
+        color: #000000;
+    }
+    
+    #myactualtable tr:hover #status {
+    	color:white;
+    }
+    
+    td#status {
+		font-weight: bold;
+        color: black;
+    }
+    
+    
+    th {
+    	font-size: 30px;
+    }
+    
+    
+    table {
+    	border-collapse: collapse;
+     	width: contain;
+        margin-left: auto;
+  		margin-right: auto;
+    }
+
+    td, th {
+    	border: 1px solid #7842f5;
+    	text-align: left;
+    	padding: 8px;
+    }
+    
+    @media screen and (max-width: 400px) {
+  		#legend td {
+    		display: block;
+  		}
+	}
+
+  </style>
+</style>
+</head>
+
+<body>
+  <h1>PARANOIA-METER</h1>
+  <select>
+    <option value="selectsort">--SELECT SORT--</option>
+    <option value="alphabetical">Alphabetical</option>
+  	<option value="redtoblue">Red to Blue</option>
+  	<option value="bluetored">Blue to Red</option>
+  </select>
+  <br>
+  <br>
+  <button>FILTER</button>
+  <br>
+  <br>
+  <table id="mytable">
+    <th id="personname">Name</th>
+    <th id="personstatus">Status</th>
+    <tbody id="myactualtable">
+    	<tr>
+        	<td id="name">Alex</td>
+            <td id="status">High</td>
+        </tr>
+		<tr>
+        	<td id="name">Devan</td>
+            <td id="status">Moderately Low</td>
+        </tr>
+		<tr>
+        	<td id="name">Jack</td>
+            <td id="status">Moderately High</td>
+        </tr>
+		<tr>
+        	<td id="name">Livi</td>
+            <td id="status">Moderate</td>
+        </tr>
+		<tr>
+        	<td id="name">Mike</td>
+            <td id="status">Moderately Low</td>
+        </tr>
+        <tr>
+        	<td id="name">Paige</td>
+            <td id="status">Moderately Low</td>
+        </tr>
+		<tr>
+        	<td id="name">Renée</td>
+            <td id="status">Moderately Low</td>
+        </tr>
+		<tr>
+        	<td id="name">Rowan</td>
+            <td id="status">Low</td>
+        </tr>
+		<tr>
+        	<td id="name">Sadira</td>
+            <td id="status">Moderately High</td>
+        </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <table id="legend">
+  	<tr>
+  		<td id="status">High</td>
+    	<td id="status">Moderately High</td>
+    	<td id="status">Moderate</td>
+    	<td id="status">Moderately Low</td>
+    	<td id="status">Low</td>
+  	</tr>
+  <table>
+  <p>Last Updated: 1/5/23</p>
+<script>
+//if #status has High:red, Moderately High:orange, Medium:yellow Moderately low: green Low: blue
+$(document).ready(function(){ 
+	$("td#status").each(function() {
+  		const value = $(this).text();
+  
+  		if (value === "High") {
+    		$(this).css("background-color", "rgba(255, 0, 0, 0.4)");
+        } else if (value === "Moderately High") {
+    		$(this).css("background-color", "rgb(255, 128, 0, 0.4)");
+        } else if (value === "Moderate") {
+    		$(this).css("background-color", "rgba(255, 255, 0, 0.4)");
+        } else if (value == "Moderately Low") {
+        	$(this).css("background-color", "rgba(0, 255, 0, 0.4)");
+        } else if (value === "Low") {
+    		$(this).css("background-color", "rgba(0, 64, 255, 0.4)");
+  		}
+     
+	}); //status bckg change
+
+            
+  		$("button").click(function(){
+  var rows = $("#myactualtable tr");
+  var sorter = $("select option:selected").text();
+  
+  // Sort rows alphabetically
+  if (sorter === "Alphabetical") {
+    rows.sort(function(a, b) {
+      var A = $(a).find("td#name").text().toUpperCase();
+      var B = $(b).find("td#name").text().toUpperCase();
+      
+      if (A < B) {
+        return -1;
+      } else if (A > B) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  }
+  
+  // Sort rows from red to blue in chromatic order
+  if (sorter === "Red to Blue") {
+    rows.sort(function(a, b) {
+      var A = $(a).find("td#status").text().toUpperCase();
+      var B = $(b).find("td#status").text().toUpperCase();
+      
+      if (A == "HIGH") {
+      	A = 5;
+      } else if (A == "MODERATELY HIGH") {
+      	A = 4;
+      } else if (A == "MODERATE") {
+      	A = 3;
+      } else if (A == "MODERATELY LOW") {
+      	A = 2;
+      } else if (A == "LOW") {
+      	A = 1;
+      }
+      
+      if (B == "HIGH") {
+      	B = 5;
+      } else if (B == "MODERATELY HIGH") {
+      	B = 4;
+      } else if (B == "MODERATE") {
+      	B = 3;
+      } else if (B == "MODERATELY LOW") {
+      	B = 2;
+      } else if (B == "LOW") {
+      	B = 1;
+      }
+      
+      if (A > B) {
+        return -1;
+      } else if (A < B) {
+        return 1;
+      } else {
+        return 0;
+      }
+      
+    });
+  }
+  
+  // Sort rows from blue to red in chromatic order
+  if (sorter === "Blue to Red") {
+    rows.sort(function(a, b) {
+      var A = $(a).find("td#status").text().toUpperCase();
+      var B = $(b).find("td#status").text().toUpperCase();
+      
+      if (A == "HIGH") {
+      	A = 5;
+      } else if (A == "MODERATELY HIGH") {
+      	A = 4;
+      } else if (A == "MODERATE") {
+      	A = 3;
+      } else if (A == "MODERATELY LOW") {
+      	A = 2;
+      } else if (A == "LOW") {
+      	A = 1;
+      }
+      
+      if (B == "HIGH") {
+      	B = 5;
+      } else if (B == "MODERATELY HIGH") {
+      	B = 4;
+      } else if (B == "MODERATE") {
+      	B = 3;
+      } else if (B == "MODERATELY LOW") {
+      	B = 2;
+      } else if (B == "LOW") {
+      	B = 1;
+      }
+      
+      if (A < B) {
+        return -1;
+      } else if (A > B) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  }
+  
+  $("#myactualtable").append(rows);
+});
+}); //document ready
+</script>
+</body>
+</html>
