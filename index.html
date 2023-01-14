@@ -4,8 +4,13 @@
 <title>Paranoia-Meter</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <style>  
-  	select, button, body, th:hover {
+    canvas {
+    	display: none;
+    	float: left;
+  	}
+    select, button, body, th:hover {
     	color: #7842f5;
         background-color: #000000;
         
@@ -18,7 +23,6 @@
     body {
     	font-family: arial, sans-serif;
         text-align: center;
-	overflow: hidden;
     }
     
   	table, td {
@@ -260,6 +264,221 @@ $(document).ready(function(){
   $("#myactualtable").append(rows);
 });
 }); //document ready
+</script>
+<canvas id="alexChart" style="width:100%;max-width:250px"></canvas>
+<canvas id="devanChart" style="width:100%;max-width:250px"></canvas>
+<canvas id="jackChart" style="width:100%;max-width:250px"></canvas>
+<canvas id="liviChart" style="width:100%;max-width:250px"></canvas>
+<canvas id="mikeChart" style="width:100%;max-width:250px"></canvas>
+<canvas id="paigeChart" style="width:100%;max-width:250px"></canvas>
+<canvas id="reneeChart" style="width:100%;max-width:250px"></canvas>
+<canvas id="rowanChart" style="width:100%;max-width:250px"></canvas>
+<canvas id="sadiraChart" style="width:100%;max-width:250px"></canvas>
+<script>
+var xValues = ["1/5/23","1/9/23","1/12/23"];
+var yalexValues = [5, 4, 4];
+var ydevanValues = [2, 3, 4];
+var yjackValues = [4, 4, 3];
+var yliviValues = [3, 3, 3];
+var ymikeValues = [2, 3, 3];
+var ypaigeValues = [2, 2, 2];
+var yreneeValues = [2, 1, 1];
+var yrowanValues = [1, 1, 1];
+var ysadiraValues = [4, 4, 4];
+
+new Chart("alexChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: yalexValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+new Chart("devanChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: ydevanValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+new Chart("jackChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: yjackValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+new Chart("liviChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: yliviValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+new Chart("mikeChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: ymikeValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+new Chart("paigeChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: ypaigeValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+new Chart("reneeChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: yreneeValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+new Chart("rowanChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: yrowanValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+new Chart("sadiraChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,1.0)",
+      data: ysadiraValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+$(document).ready(function(){
+  $("canvas").css("display", "none");
+  $("td#name").hover(function(){
+    var chartid = "#" + $(this).text().toLowerCase() + "Chart"
+    chartid = chartid.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    $(chartid).css("display", "block");
+	$(chartid).css("float", "left");
+  }, function(){
+    var chartid = "#" + $(this).text().toLowerCase() + "Chart";
+    chartid = chartid.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+	$(chartid).css("display", "none");
+  });
+});
 </script>
 </body>
 </html>
