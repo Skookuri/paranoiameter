@@ -6,10 +6,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <style>  
-    canvas {
+    canvas.not(#myChart) {
     	display: none;
-    	float: left;
-  	}
+    }
+    
+    #myChart {
+    	width: 50%; /* or any other width as per your requirement */
+    	margin-left: auto;
+    	margin-right: auto;
+	}
+    
     select, button, body, th:hover {
     	color: #7842f5;
         background-color: #000000;
@@ -67,8 +73,6 @@
     		display: block;
   		}
 	}
-
-  </style>
 </style>
 </head>
 
@@ -127,8 +131,18 @@
         </tr>
     </tbody>
   </table>
+  <canvas id="alexChart" style="width:100%;max-width:250px"></canvas>
+  <canvas id="devanChart" style="width:100%;max-width:250px"></canvas>
+  <canvas id="jackChart" style="width:100%;max-width:250px"></canvas>
+  <canvas id="liviChart" style="width:100%;max-width:250px"></canvas>
+  <canvas id="mikeChart" style="width:100%;max-width:250px"></canvas>
+  <canvas id="paigeChart" style="width:100%;max-width:250px"></canvas>
+  <canvas id="reneeChart" style="width:100%;max-width:250px"></canvas>
+  <canvas id="rowanChart" style="width:100%;max-width:250px"></canvas>
+  <canvas id="sadiraChart" style="width:100%;max-width:250px"></canvas>
   <br>
   <br>
+  
   <table id="legend">
   	<tr>
   		<td id="status">High</td>
@@ -265,15 +279,8 @@ $(document).ready(function(){
 });
 }); //document ready
 </script>
-<canvas id="alexChart" style="width:100%;max-width:250px"></canvas>
-<canvas id="devanChart" style="width:100%;max-width:250px"></canvas>
-<canvas id="jackChart" style="width:100%;max-width:250px"></canvas>
-<canvas id="liviChart" style="width:100%;max-width:250px"></canvas>
-<canvas id="mikeChart" style="width:100%;max-width:250px"></canvas>
-<canvas id="paigeChart" style="width:100%;max-width:250px"></canvas>
-<canvas id="reneeChart" style="width:100%;max-width:250px"></canvas>
-<canvas id="rowanChart" style="width:100%;max-width:250px"></canvas>
-<canvas id="sadiraChart" style="width:100%;max-width:250px"></canvas>
+
+<canvas id="myChart" style="width:100%;max-width:600px; height: 500px;"></canvas>
 <script>
 var xValues = ["1/5/23","1/9/23","1/12/23"];
 var yalexValues = [5, 4, 4];
@@ -466,14 +473,77 @@ new Chart("sadiraChart", {
   }
 });
 
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+  		label: "Alex",
+  		data: yalexValues,
+  		borderColor: "pink",
+  		fill: false
+	}, { 
+  		label: "Devan",
+  		data: ydevanValues,
+  		borderColor: "lime",
+  		fill: false
+	}, { 
+  		label: "Jack",
+  		data: yjackValues,
+  		borderColor: "green",
+  		fill: false
+	}, {
+    	label: "Livi",
+      	data: yliviValues,
+      	borderColor: "green",
+      	fill: false    
+    }, {
+      	label: "Mike",
+        data: ymikeValues,
+      	borderColor: "red",
+      	fill: false   
+    }, {
+      	label: "Paige",
+        data: ypaigeValues,
+      	borderColor: "purple",
+      	fill: false
+      
+    }, {
+      	label: "Renée",
+        data: yreneeValues,
+      	borderColor: "yellow",
+      	fill: false
+    }, {
+      	label: "Rowan",
+        data: yrowanValues,
+      	borderColor: "white",
+      	fill: false
+    
+    }, {
+      	label: "Sadira",
+        data: ysadiraValues,
+      	borderColor: "orange",
+      	fill: false
+    }]
+  },
+  options: {
+    legend: {display: true},
+    scales: {
+      yAxes: [{ticks: {min: 1, max:5, stepSize: 1.0}}],
+    }
+  }
+});
+
+
 $(document).ready(function(){
   $("canvas").css("display", "none");
+  $("#myChart").css("display", "block");
   $("td#name").hover(function(){
     var chartid = "#" + $(this).text().toLowerCase() + "Chart"
     chartid = chartid.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     $(chartid).css("display", "block");
 	$(chartid).css("float", "left");
-  }, function(){
+  }, function() {
     var chartid = "#" + $(this).text().toLowerCase() + "Chart";
     chartid = chartid.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 	$(chartid).css("display", "none");
