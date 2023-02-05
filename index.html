@@ -99,15 +99,15 @@
         </tr>
 		<tr>
         	<td id="name">Devan</td>
-            <td id="status">Moderately High</td>
+            <td id="status">High</td>
         </tr>
 		<tr>
         	<td id="name">Jack</td>
-            <td id="status">Moderate</td>
+            <td id="status">High</td>
         </tr>
 		<tr>
         	<td id="name">Livi</td>
-            <td id="status">Moderate</td>
+            <td id="status">Moderately High</td>
         </tr>
 		<tr>
         	<td id="name">Mike</td>
@@ -127,7 +127,7 @@
         </tr>
 		<tr>
         	<td id="name">Sadira</td>
-            <td id="status">Moderately High</td>
+            <td id="status">High</td>
         </tr>
     </tbody>
   </table>
@@ -152,7 +152,7 @@
     	<td id="status">Low</td>
   	</tr>
   <table>
-  <p>Last Updated: 1/12/23</p>
+  <p>Last Updated: 2/4/23</p>
 <script>
 //if #status has High:red, Moderately High:orange, Medium:yellow Moderately low: green Low: blue
 $(document).ready(function(){ 
@@ -282,16 +282,16 @@ $(document).ready(function(){
 
 <canvas id="myChart" style="width:100%;max-width:600px; height: 500px;"></canvas>
 <script>
-var xValues = ["1/5/23","1/9/23","1/12/23"];
-var yalexValues = [5, 4, 4];
-var ydevanValues = [2, 3, 4];
-var yjackValues = [4, 4, 3];
-var yliviValues = [3, 3, 3];
-var ymikeValues = [2, 3, 3];
-var ypaigeValues = [2, 2, 2];
-var yreneeValues = [2, 1, 1];
-var yrowanValues = [1, 1, 1];
-var ysadiraValues = [4, 4, 4];
+var xValues = ["1/5/23","1/9/23","1/12/23", "2/4/23"];
+var yalexValues = [5, 4, 4, 4];
+var ydevanValues = [2, 3, 4, 5];
+var yjackValues = [4, 4, 3, 5];
+var yliviValues = [3, 3, 3, 4];
+var ymikeValues = [2, 3, 3, 3];
+var ypaigeValues = [2, 2, 2, 2];
+var yreneeValues = [2, 1, 1, 1];
+var yrowanValues = [1, 1, 1, 1];
+var ysadiraValues = [4, 4, 4, 5];
 
 new Chart("alexChart", {
   type: "line",
